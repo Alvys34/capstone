@@ -1190,7 +1190,7 @@ GameObject:
   - component: {fileID: 59437095}
   m_Layer: 0
   m_Name: BigObstacle
-  m_TagString: Untagged
+  m_TagString: TrackColliders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4569,6 +4569,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495493851688002668, guid: 7f177380b515c0a4ba88d56e39adbb52,
+        type: 3}
+      propertyPath: m_TagString
+      value: TrackColliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495493852292573131, guid: 7f177380b515c0a4ba88d56e39adbb52,
+        type: 3}
+      propertyPath: m_TagString
+      value: TrackColliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495493852406561212, guid: 7f177380b515c0a4ba88d56e39adbb52,
+        type: 3}
+      propertyPath: m_TagString
+      value: TrackColliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495493853129056573, guid: 7f177380b515c0a4ba88d56e39adbb52,
+        type: 3}
+      propertyPath: m_TagString
+      value: TrackColliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495493853195768881, guid: 7f177380b515c0a4ba88d56e39adbb52,
+        type: 3}
+      propertyPath: m_TagString
+      value: TrackColliders
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f177380b515c0a4ba88d56e39adbb52, type: 3}
@@ -32962,7 +32987,7 @@ GameObject:
   - component: {fileID: 1941683335}
   m_Layer: 0
   m_Name: BigObstacle
-  m_TagString: Untagged
+  m_TagString: TrackColliders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
