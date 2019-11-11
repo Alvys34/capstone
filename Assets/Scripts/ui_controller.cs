@@ -6,20 +6,19 @@ using ModuloKart.CustomVehiclePhysics;
 
 public class ui_controller : MonoBehaviour
 {
-    GameObject[] ui_item;
-    int item_selected;
+   public GameObject[] ui_item;
+   public int item_selected;
 
-    bool has_door_1 = true;
-    bool has_door_2 = true;
-    bool has_tire_1 = true;
-    bool has_tire_2 = true;
-    bool has_tire_3 = true;
-    bool has_tire_4 = true;
-    bool has_hood = true;
+    public bool has_door_1 = true;
+     public bool has_door_2 = true;
+    public bool has_tire_1 = true;
+    public bool has_tire_2 = true;
+    public bool has_tire_3 = true;
+    public bool has_tire_4 = true;
+    public bool has_hood = true;
     public int playerNum;
     public GameObject vechicle;
-
-
+    public GameObject wheeldetacher;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +34,7 @@ public class ui_controller : MonoBehaviour
         item_selected = 0;
         ui_item = new GameObject[7];
         int i = 0;
-
+        
         while (i < 7)
         {
             ui_item[i] = gameObject.transform.GetChild(i).gameObject;
@@ -55,6 +54,8 @@ public class ui_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Player_Wheel_Detach wheels = wheeldetacher.GetComponentInChildren<Player_Wheel_Detach>();
+
         if (!vechicle.GetComponent<VehicleBehavior>().isControllerInitialized) return;
 
         if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemNext))
@@ -66,10 +67,17 @@ public class ui_controller : MonoBehaviour
 
             item_selected -= 1;
             if (item_selected < 0)
+            {
                 item_selected = 6;
+            }
 
+            
             ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
-
+            if (ui_item[item_selected].gameObject.active == false)
+            {
+                Debug.Log("Item not there");
+                
+            }
 
             //Debug.Log("after" + item_selected);
 
@@ -81,11 +89,16 @@ public class ui_controller : MonoBehaviour
 
 
             item_selected += 1;
+          
             if (item_selected >= 7)
                 item_selected = 0;
-
+  
             ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
+          if (ui_item[item_selected].gameObject.active == false)
+            {
+                Debug.Log("Item not there");
 
+            }
 
         }
 
@@ -103,6 +116,7 @@ public class ui_controller : MonoBehaviour
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(1);
                         Debug.Log("used front left tire");
                         has_tire_1 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
                         Debug.Log("tire already used");
@@ -115,6 +129,7 @@ public class ui_controller : MonoBehaviour
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(2);
                         Debug.Log("used front right tire");
                         has_tire_2 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
                         Debug.Log("tire already used");
@@ -127,6 +142,7 @@ public class ui_controller : MonoBehaviour
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(3);
                         Debug.Log("used back left tire");
                         has_tire_3 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
                         Debug.Log("tire already used");
@@ -139,6 +155,7 @@ public class ui_controller : MonoBehaviour
                         vechicle.GetComponentInChildren<Player_Wheel_Detach>().Throw_Wheel(4);
                         Debug.Log("used back right tire");
                         has_tire_4 = false;
+                        ui_item[item_selected].gameObject.SetActive(false);
                     }
                     else
                         Debug.Log("tire already used");
@@ -179,6 +196,7 @@ public class ui_controller : MonoBehaviour
                     vechicle.GetComponentInChildren<Player_Projectile>().Throw_Hood();
                     Debug.Log("used hood");
                     has_hood = false;
+                    ui_item[item_selected].gameObject.SetActive(false);
                     //call hood item function use here
                 }
                 else if (!has_hood)
@@ -189,7 +207,7 @@ public class ui_controller : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemNext))
+       /* if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_ItemNext))
         {
             // Debug.Log("before" + item_selected);
             ui_item[item_selected].transform.localScale -= new Vector3(0.5f, 0.5f);
@@ -217,7 +235,7 @@ public class ui_controller : MonoBehaviour
             ui_item[item_selected].transform.localScale += new Vector3(0.5f, 0.5f);
 
 
-        }
+        }*/
 
         if (Input.GetButtonDown(vechicle.GetComponent<VehicleBehavior>().input_projectile))
         {
